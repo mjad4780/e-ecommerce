@@ -1,4 +1,5 @@
-import 'package:e_ecommerce/main.dart';
+import 'package:e_ecommerce/Starts/Start.dart';
+
 import 'package:flutter/material.dart';
 
 class splash_screen extends StatefulWidget {
@@ -12,7 +13,7 @@ class _splash_screenState extends State<splash_screen> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 3), () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => homee()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => start()));
     });
     super.initState();
   }

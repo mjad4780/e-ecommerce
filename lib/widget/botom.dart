@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class CustomFormButton extends StatelessWidget {
   final String innerText;
   final void Function()? onPressed;
-  const CustomFormButton(
-      {Key? key, required this.innerText, required this.onPressed})
+  const CustomFormButton({Key? key, required this.innerText, this.onPressed})
       : super(key: key);
 
   @override
@@ -13,7 +12,7 @@ class CustomFormButton extends StatelessWidget {
     return Container(
       width: size.width * 0.8,
       decoration: BoxDecoration(
-        color: const Color(0xff233743),
+        color: Color.fromARGB(255, 205, 21, 21),
         borderRadius: BorderRadius.circular(26),
       ),
       child: TextButton(
