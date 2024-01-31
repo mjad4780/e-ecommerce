@@ -30,6 +30,10 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/forget_password",
     builder: (context, state) => forget_password(),
+  ),
+  GoRoute(
+    path: "/profile",
+    builder: (context, state) => forget_password(),
   )
 ]);
 

@@ -33,7 +33,7 @@ import 'package:image_picker/image_picker.dart';
 
 class UserCubit extends Cubit<UserState> {
 
-  UserCubit(this.api) : super(UserInitial());
+  UserCubit({required this.api}) : super(UserInitial());
 
 
   final ApiConsumer api;
@@ -52,11 +52,6 @@ class UserCubit extends Cubit<UserState> {
 
 
   TextEditingController signInPassword = TextEditingController();
-
-
-  //Sign Up Form key
-
-  //Profile Pic
 
 
   XFile? profilePic;
@@ -91,6 +86,11 @@ class UserCubit extends Cubit<UserState> {
 
   TextEditingController confirmPassword = TextEditingController();
 
+  final GlobalKey<FormState> formkey = GlobalKey();
+
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
 
   models? user;
 
@@ -100,7 +100,7 @@ class UserCubit extends Cubit<UserState> {
     profilePic = image;
 
 
-    emit(UploadProfilePic());
+    //  emit(UploadProfilePic());
 
   }
 
@@ -110,6 +110,7 @@ class UserCubit extends Cubit<UserState> {
     try {
 
       emit(SignUpLoading());
+
 
       Map<String, dynamic> response = await api.post(
 
@@ -121,17 +122,24 @@ class UserCubit extends Cubit<UserState> {
 
           ApiKey.name: signUpName.text,
 
+
           ApiKey.phone: signUpPhoneNumber.text,
+
 
           ApiKey.email: signUpEmail.text,
 
+
           ApiKey.password: signUpPassword.text,
+
 
           //  ApiKey.confirmPassword: confirmPassword.text,
 
+
           // ApiKey.location:
 
+
           // '{"name":"methalfa","address":"meet halfa","coordinates":[30.1572709,31.224779]}',
+
 
           // ApiKey.profilePic: await uploadImageToAPI(profilePic!)
 
@@ -139,9 +147,12 @@ class UserCubit extends Cubit<UserState> {
 
       );
 
+
       final signUPModel = SignUpModel.fromJson(response);
 
+
       print(signUPModel.message);
+
 
       emit(SignUpSuccess(message: signUPModel.message));
 
@@ -157,6 +168,7 @@ class UserCubit extends Cubit<UserState> {
   userprofile() async {
 
     emit(profilLoading());
+
 
     try {
 
@@ -190,7 +202,6 @@ class UserCubit extends Cubit<UserState> {
   signIn() async {
 
     try {
-
       emit(SignInLoading());
 
 
@@ -208,25 +219,18 @@ class UserCubit extends Cubit<UserState> {
 
       );
 
-
       user = models.fromJson(response);
 
-
       //final decodedToken = JwtDecoder.decode(user!.data!.token);//id لاستخراج tokenاو كان طالب فك  التشفير عن
-
 
       CacheHelper.saveData(
 
           key: ApiKey.token, value: user!.data!.token); //cache في tokenحفظ
 
-
       //  CacheHelper.saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);//cache في  idحفظ
-
-
       emit(SignInSuccess());
 
     } on ServerException catch (e) {
-
       emit(SignInFailure(errMessage: e.errModel.errorMessage));
 
     }
