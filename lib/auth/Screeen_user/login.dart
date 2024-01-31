@@ -1,4 +1,4 @@
-import 'package:e_ecommerce/widget/TEXT.dart';
+import 'package:e_ecommerce/widget/text.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:e_ecommerce/widget/social_account.dart';
 import 'package:e_ecommerce/widget/text_filed.dart';

@@ -1,5 +1,4 @@
-import 'package:e_ecommerce/auth/Screeen_user/login.dart';
-import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
+import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:flutter/material.dart';
 
@@ -22,8 +21,7 @@ class start extends StatelessWidget {
           CustomFormButton(
             innerText: 'Login',
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Login()));
+              push(context, '/Login');
             },
           ),
           const SizedBox(
@@ -32,8 +30,7 @@ class start extends StatelessWidget {
           CustomFormButton(
             innerText: 'Rigster',
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Rigster()));
+              push(context, '/Rigster');
             },
           ),
           const SizedBox(

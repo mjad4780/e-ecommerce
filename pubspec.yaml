@@ -45,10 +45,10 @@ dependencies:
   syncfusion_flutter_maps: ^24.1.47
   geolocator: ^10.1.0
   awesome_dialog: ^3.2.0
-
-
-
-
+  shimmer: ^3.0.0 
+  get_it: ^7.6.7
+  go_router: ^13.1.0
+  smooth_page_indicator: ^1.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -99,3 +99,8 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_assets:
+  assets_path: assets/images/
+  output_path: lib/core/assets2/
+  filename: app_assets.dart
+  field_prefix:
