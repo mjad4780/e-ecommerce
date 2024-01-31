@@ -15,11 +15,11 @@ class Rigster extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(children: const [
-            SizedBox(
+          child: ListView(children: [
+            const SizedBox(
               height: 10,
             ),
-            Padding(
+            const Padding(
               padding: const EdgeInsets.only(left: 15),
               child: Row(
                 children: [
@@ -30,53 +30,53 @@ class Rigster extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            const input_text(text: 'name'),
-            SizedBox(
+            input_text(text: 'name'),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'name',
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            const input_text(text: 'phone'),
-            SizedBox(
+            input_text(text: 'phone'),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'phone',
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            const input_text(text: 'email'),
-            SizedBox(
+            input_text(text: 'email'),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'email',
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            const input_text(text: 'password'),
-            SizedBox(
+            input_text(text: 'password'),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'password',
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
-            CustomFormButton(
+            const CustomFormButton(
               innerText: 'Rigster',
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Padding(
@@ -86,10 +86,10 @@ class Rigster extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            social_account()
+            const social_account()
           ]),
         ));
   }

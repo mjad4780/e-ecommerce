@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 class input_text extends StatelessWidget {
-  const input_text({
+  input_text({
     super.key,
     this.fontSize = 22,
     this.color,
     this.onTap,
     required this.text,
   });
-  final double fontSize;
+  final double? fontSize;
   final Color? color;
-  final Function()? onTap;
+  void Function()? onTap;
   final String text;
+
   @override
   Widget build(BuildContext context) {
     return Row(

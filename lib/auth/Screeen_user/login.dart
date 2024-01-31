@@ -1,3 +1,4 @@
+import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/widget/text.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:e_ecommerce/widget/social_account.dart';
@@ -13,11 +14,11 @@ class Login extends StatelessWidget {
         appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(children: const [
-            SizedBox(
+          child: ListView(children: [
+            const SizedBox(
               height: 35,
             ),
-            Padding(
+            const Padding(
               padding: const EdgeInsets.only(left: 15),
               child: Row(
                 children: [
@@ -28,31 +29,34 @@ class Login extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            const input_text(text: 'email'),
-            SizedBox(
+            input_text(text: 'email'),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'email',
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
-            const input_text(text: 'password'),
-            SizedBox(
+            input_text(
+              text: 'password',
+              onTap: () => push(context, "/forget_password"),
+            ),
+            const SizedBox(
               height: 11,
             ),
-            CustomInputField(
+            const CustomInputField(
               hintText: 'password',
             ),
-            SizedBox(
+            const SizedBox(
               height: 11,
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 11),
+              padding: EdgeInsets.only(right: 11),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -61,17 +65,20 @@ class Login extends StatelessWidget {
                     fontSize: 16,
                     text: 'Forget your password?',
                     color: Colors.blue,
+                    onTap: () {
+                      push(context, "/forget_password");
+                    },
                   ),
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
-            CustomFormButton(
+            const CustomFormButton(
               innerText: 'Login',
             ),
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
             Padding(
@@ -81,10 +88,10 @@ class Login extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            social_account()
+            const social_account()
           ]),
         ));
   }

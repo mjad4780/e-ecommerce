@@ -1,6 +1,7 @@
 import 'package:e_ecommerce/Onboirding_splash/Start.dart';
 import 'package:e_ecommerce/Onboirding_splash/onboirding.dart';
 import 'package:e_ecommerce/Onboirding_splash/splash_screen.dart';
+import 'package:e_ecommerce/auth/Screeen_user/forget_password.dart';
 import 'package:e_ecommerce/auth/Screeen_user/login.dart';
 import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
 import 'package:go_router/go_router.dart';
@@ -25,6 +26,10 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/Onboirding",
     builder: (context, state) => Onboirding(),
+  ),
+  GoRoute(
+    path: "/forget_password",
+    builder: (context, state) => forget_password(),
   )
 ]);
 
