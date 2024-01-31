@@ -4,6 +4,7 @@ import 'package:e_ecommerce/Onboirding_splash/splash_screen.dart';
 import 'package:e_ecommerce/auth/Screeen_user/forget_password.dart';
 import 'package:e_ecommerce/auth/Screeen_user/login.dart';
 import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
+import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(routes: [
@@ -33,7 +34,7 @@ final GoRouter router = GoRouter(routes: [
   ),
   GoRoute(
     path: "/profile",
-    builder: (context, state) => forget_password(),
+    builder: (context, state) => profile(),
   )
 ]);
 

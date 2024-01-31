@@ -1,6 +1,6 @@
 class profil {
   bool? status;
-  Null? message;
+  String? message;
   Data? data;
 
   profil({this.status, this.message, this.data});

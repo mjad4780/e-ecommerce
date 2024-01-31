@@ -22,7 +22,8 @@ class Login extends StatelessWidget {
               content: Text("success"),
             ),
           );
-          pushpushReplacement(context, "/profile");
+          context.read<UserCubit>().userprofile();
+          push(context, "/profile");
         } else if (state is SignInFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errMessage)),
@@ -92,14 +93,14 @@ class Login extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        input_text(
-                          fontSize: 16,
-                          text: 'Forget your password?',
-                          color: Colors.blue,
-                          onTap: () {
-                            push(context, "/forget_password");
-                          },
-                        ),
+                        // input_text(
+                        //   fontSize: 16,
+                        //   text: 'Forget your password?',
+                        //   color: Colors.blue,
+                        //   onTap: () {
+                        //     //   push(context, "/forget_password");
+                        //   },
+                        // ),
                       ],
                     ),
                   ),

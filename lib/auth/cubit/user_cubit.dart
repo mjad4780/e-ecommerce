@@ -86,6 +86,7 @@ class UserCubit extends Cubit<UserState> {
 
   TextEditingController confirmPassword = TextEditingController();
 
+
   final GlobalKey<FormState> formkey = GlobalKey();
 
 
@@ -99,8 +100,7 @@ class UserCubit extends Cubit<UserState> {
 
     profilePic = image;
 
-
-    //  emit(UploadProfilePic());
+    emit(UploadProfilePic());
 
   }
 
@@ -202,6 +202,7 @@ class UserCubit extends Cubit<UserState> {
   signIn() async {
 
     try {
+
       emit(SignInLoading());
 
 
@@ -219,18 +220,24 @@ class UserCubit extends Cubit<UserState> {
 
       );
 
+
       user = models.fromJson(response);
 
+
       //final decodedToken = JwtDecoder.decode(user!.data!.token);//id لاستخراج tokenاو كان طالب فك  التشفير عن
+
 
       CacheHelper.saveData(
 
           key: ApiKey.token, value: user!.data!.token); //cache في tokenحفظ
 
+
       //  CacheHelper.saveData(key: ApiKey.id, value: decodedToken[ApiKey.id]);//cache في  idحفظ
+
       emit(SignInSuccess());
 
     } on ServerException catch (e) {
+
       emit(SignInFailure(errMessage: e.errModel.errorMessage));
 
     }
