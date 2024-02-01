@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
 import 'package:e_ecommerce/auth/cubit/user_cubit.dart';
-import 'package:e_ecommerce/auth/models/profile_models.dart';
+
 import 'package:e_ecommerce/core/api/dio_consumer.dart';
 import 'package:e_ecommerce/core/api/end_ponits.dart';
 import 'package:e_ecommerce/core/cache/cache_helper.dart';

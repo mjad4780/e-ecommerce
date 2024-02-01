@@ -13,7 +13,23 @@ class profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<UserCubit, UserState>(
       listener: (BuildContext context, state) {
-        if (state is profilFailure) {
+        if (state is logoutFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errMessage),
+            ),
+          );
+        } else if (state is logoutSuccess) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('succesas'),
+            ),
+          );
+
+          print('ckjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+          print('ckjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+          pushpushReplacement(context, '/Login');
+        } else if (state is profilFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.errMessage),
@@ -76,6 +92,7 @@ class profile extends StatelessWidget {
                           IconButton(
                               onPressed: () {
                                 context.read<UserCubit>().userprofile();
+
                                 push(context, "/profile");
                               },
                               icon: Icon(Icons.abc)),
@@ -83,7 +100,15 @@ class profile extends StatelessWidget {
                               onPressed: () {
                                 CacheHelper().clearData(key: ApiKey.token);
                               },
-                              icon: Icon(Icons.ac_unit_rounded))
+                              icon: Icon(Icons.ac_unit_rounded)),
+                          state is logoutLoading
+                              ? CircularProgressIndicator()
+                              : IconButton(
+                                  onPressed: () {
+                                    context.read<UserCubit>().Logout();
+                                    print('ckjjjjjhhhhhhhhhhhhhhhhhhhhhhhhhhh');
+                                  },
+                                  icon: Icon(Icons.gamepad))
                         ],
                       ),
                     )),
