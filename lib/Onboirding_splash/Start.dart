@@ -2,6 +2,7 @@ import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 
 import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/home_page/Screen/Home_start_Bottom.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,7 @@ class start extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return token != "" && token != null
-        ? profile()
+        ? Home_start_Bottom()
         : Container(
             decoration: const BoxDecoration(
               //  borderRadius: BorderRadius.circular(12),

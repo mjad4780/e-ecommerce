@@ -29,6 +29,6 @@ class Assets {
 
   /// Assets for imagesSplash Screen 012x
   /// assets/images/Splash Screen 01@2x.png
-  static const String imagesSplashScree012x =
+  static const String imagesSplashScreen012x =
       "assets/images/Splash Screen 01@2x.png";
 }

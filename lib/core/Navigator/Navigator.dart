@@ -5,6 +5,8 @@ import 'package:e_ecommerce/auth/Screeen_user/forget_password.dart';
 import 'package:e_ecommerce/auth/Screeen_user/login.dart';
 import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
 import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
+import 'package:e_ecommerce/home_page/Screen/Home_start_Bottom.dart';
+
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(routes: [
@@ -35,7 +37,11 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/profile",
     builder: (context, state) => profile(),
-  )
+  ),
+  GoRoute(
+    path: "/home_page",
+    builder: (context, state) => Home_start_Bottom(),
+  ),
 ]);
 
 void push(context, String path) {

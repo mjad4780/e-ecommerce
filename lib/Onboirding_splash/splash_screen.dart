@@ -32,6 +32,6 @@ class _splash_screenState extends State<splash_screen> {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(Assets.imagesSplashScree012x);
+    return Image.asset(Assets.imagesSplashScreen012x);
   }
 }

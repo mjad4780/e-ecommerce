@@ -6,6 +6,7 @@ import 'package:e_ecommerce/core/api/end_ponits.dart';
 import 'package:e_ecommerce/core/cache/cache_helper.dart';
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +15,7 @@ void main() async {
   await CacheHelper.cacheIn();
   token = CacheHelper.getDataString(key: ApiKey.token);
   runApp(
-    const MyApp(),
+    MyApp(),
   );
 }
 
@@ -23,14 +24,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (BuildContext context) {
-          return UserCubit(api: DioConsumer(dio: Dio()));
-        },
-        child: MaterialApp.router(
-          routerConfig: router,
-          debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
-        ));
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+            create: (context) => UserCubit(api: DioConsumer(dio: Dio()))),
+        BlocProvider(create: (context) => HomePageCubit())
+      ],
+      child: MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+      ),
+    );
   }
 }
