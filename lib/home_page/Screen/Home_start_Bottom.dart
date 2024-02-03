@@ -39,6 +39,9 @@ class Home_start_Bottom extends StatelessWidget {
                       GButton(
                         icon: Icons.home,
                         text: 'Home',
+                        // onPressed: () {
+                        //   cubit.Banners();
+                        // },
                       ),
                       GButton(
                         icon: Icons.shopping_cart,

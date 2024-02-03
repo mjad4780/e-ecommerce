@@ -1,5 +1,4 @@
 class EndPoint {
-
   static String baseUrl = "https://student.valuxapps.com/api/";
 
   static String signIn = "login";
@@ -8,12 +7,10 @@ class EndPoint {
 
   static String profile = "profile";
   static String logout = "logout";
-
+  static String banners = "banners";
 }
 
-
 class ApiKey {
-
   static String status = "status";
 
   static String errorMessage = "ErrorMessage";
@@ -37,6 +34,4 @@ class ApiKey {
   static String location = "location";
 
   static String profilePic = "profilePic";
-
 }
-

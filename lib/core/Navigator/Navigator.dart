@@ -6,6 +6,7 @@ import 'package:e_ecommerce/auth/Screeen_user/login.dart';
 import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
 import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
 import 'package:e_ecommerce/home_page/Screen/Home_start_Bottom.dart';
+import 'package:e_ecommerce/home_page/Screen/home_page.dart';
 
 import 'package:go_router/go_router.dart';
 
