@@ -29,8 +29,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => UserCubit(api: DioConsumer(dio: Dio()))),
         BlocProvider(
-            create: (context) =>
-                HomePageCubit(api: DioConsumer(dio: Dio()))..Banners())
+            create: (context) => HomePageCubit(api: DioConsumer(dio: Dio()))
+              ..Banners()
+              ..Categoriess())
       ],
       child: MaterialApp.router(
         routerConfig: router,

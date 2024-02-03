@@ -7,6 +7,24 @@ class banners {
     image = json['image'];
   }
 }
+
+class Categories {
+  int? id;
+  String? image;
+  String? name;
+
+  Categories.fromJson({required Map<String, dynamic> json}) {
+    id = json['status'];
+    image = json['image'];
+    name = json['name'];
+  }
+}
+
+
+
+
+
+
 // class banners {
 //   bool? status;
 //   String? message;

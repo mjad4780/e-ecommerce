@@ -1,3 +1,4 @@
+import 'package:e_ecommerce/core/assets2/app_assets.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class _bannerState extends State<banner> {
     final cubit = BlocProvider.of<HomePageCubit>(context);
 
     return SizedBox(
-      height: 444,
+      height: 279,
       child: PageView.builder(
           onPageChanged: (index) {
             current = index;
@@ -28,13 +29,14 @@ class _bannerState extends State<banner> {
           itemCount: 3,
           itemBuilder: (context, index) {
             return SizedBox(
-              height: 200,
+              height: 100,
               width: double.infinity,
               child: Padding(
-                padding: const EdgeInsets.all(18.0),
+                padding: const EdgeInsets.all(16.0),
                 child: ListView(
                   children: [
                     Image.network(
+                      //     Assets.imagesPexelsPhoto911677,
                       cubit.banners2[index].image!,
                       width: double.infinity,
                     ),

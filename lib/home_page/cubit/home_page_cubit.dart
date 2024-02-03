@@ -49,4 +49,20 @@ class HomePageCubit extends Cubit<HomePageState> {
       emit(failerpanners(error: e.message));
     }
   }
+
+  List<Categories> categories = [];
+  Categoriess() async {
+    try {
+      emit(loadingcategories());
+      final response = await api.get(EndPoint.categories);
+
+      for (var item in response['data']['data']) {
+        categories.add(Categories.fromJson(json: item));
+      }
+
+      emit(successcategories());
+    } on DioException catch (e) {
+      emit(failercategories(error: e.message));
+    }
+  }
 }

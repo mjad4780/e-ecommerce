@@ -2,6 +2,7 @@ import 'package:e_ecommerce/Onboirding_splash/inboiding.dart';
 import 'package:e_ecommerce/core/assets2/app_assets.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/home_page/widget/banners.dart';
+import 'package:e_ecommerce/widget/text.dart';
 import 'package:e_ecommerce/widget/text_filed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +27,67 @@ class _home_pageState extends State<home_page> {
         return Scaffold(
             body: ListView(
           children: [
-            CustomInputField(
-              hintText: 'search',
+            const Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: CustomInputField(
+                suffixIcon2: Icon(Icons.search),
+                hintText: 'search',
+              ),
             ),
-            SizedBox(
-              height: 2,
-            ),
-            state is loadingbanners
+            state is loadingbanners || state is loadingcategories
                 ? Center(child: CircularProgressIndicator())
                 : banner(),
+            input_text(text: 'Categories'),
+            const SizedBox(
+              height: 2,
+            ),
+            SizedBox(
+              height: 222,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cubit.categories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        CircleAvatar(
+                            radius: 36,
+                            backgroundImage:
+                                //  AssetImage(Assets.imagesPexelsPhoto911677)
+                                NetworkImage(cubit.categories[index].image!)),
+                        Text(
+                          cubit.categories[index].name!,
+                          style: TextStyle(fontSize: 16),
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
           ],
         ));
       },
     );
   }
+
+  // Padding categoriess() {
+  //       final cubit = BlocProvider.of<HomePageCubit>(context);
+
+  //   return const Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: Column(
+  //       children: [
+  //         CircleAvatar(
+  //             radius: 36,
+  //             backgroundImage: NetworkImage()),
+  //         Text(
+  //    ,
+  //           style: TextStyle(fontSize: 16),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }
