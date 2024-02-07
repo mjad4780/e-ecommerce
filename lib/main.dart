@@ -15,7 +15,7 @@ void main() async {
   await CacheHelper.cacheIn();
   token = CacheHelper.getDataString(key: ApiKey.token);
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 

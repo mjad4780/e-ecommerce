@@ -1,14 +1,13 @@
-import 'package:e_ecommerce/Onboirding_splash/inboiding.dart';
+import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/core/assets2/app_assets.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/home_page/widget/banners.dart';
+import 'package:e_ecommerce/home_page/widget/product_home_page_card.dart';
 import 'package:e_ecommerce/widget/text.dart';
 import 'package:e_ecommerce/widget/text_filed.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class home_page extends StatefulWidget {
   const home_page({super.key});
@@ -18,6 +17,7 @@ class home_page extends StatefulWidget {
 }
 
 class _home_pageState extends State<home_page> {
+  bool current = true;
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<HomePageCubit>(context);
@@ -28,66 +28,65 @@ class _home_pageState extends State<home_page> {
             body: ListView(
           children: [
             const Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
               child: CustomInputField(
                 suffixIcon2: Icon(Icons.search),
                 hintText: 'search',
               ),
             ),
-            state is loadingbanners || state is loadingcategories
-                ? Center(child: CircularProgressIndicator())
-                : banner(),
+            //      state is loadingbanners || state is loadingcategories
+            //     ? Center(child: CircularProgressIndicator())
+            // :
+            const banner(),
             input_text(text: 'Categories'),
             const SizedBox(
               height: 2,
             ),
             SizedBox(
-              height: 222,
+              height: 130,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: cubit.categories.length,
+                itemCount: 3,
+                //   cubit.categories.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                            radius: 36,
-                            backgroundImage:
-                                //  AssetImage(Assets.imagesPexelsPhoto911677)
-                                NetworkImage(cubit.categories[index].image!)),
-                        Text(
-                          cubit.categories[index].name!,
-                          style: TextStyle(fontSize: 16),
-                        )
-                      ],
+                  return const Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                              radius: 36,
+                              backgroundImage:
+                                  AssetImage(Assets.imagesPexelsPhoto911677)
+                              //    NetworkImage(cubit.categories[index].image!)
+                              ),
+                          Text(
+                            'hyfhf',
+                            //  cubit.categories[index].name!,
+                            style: TextStyle(fontSize: 16),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
               ),
-            )
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Product',
+                style: TextStyle(fontSize: 22),
+              ),
+            ),
+            GestureDetector(
+                onTap: () {
+                  push(context, '/Product');
+                },
+                child: product_home_page_card()),
           ],
         ));
       },
     );
   }
-
-  // Padding categoriess() {
-  //       final cubit = BlocProvider.of<HomePageCubit>(context);
-
-  //   return const Padding(
-  //     padding: const EdgeInsets.all(8.0),
-  //     child: Column(
-  //       children: [
-  //         CircleAvatar(
-  //             radius: 36,
-  //             backgroundImage: NetworkImage()),
-  //         Text(
-  //    ,
-  //           style: TextStyle(fontSize: 16),
-  //         )
-  //       ],
-  //     ),
-  //   );
-  // }
 }

@@ -2,7 +2,7 @@ import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 
 import 'package:e_ecommerce/core/cache/const.dart';
-import 'package:e_ecommerce/home_page/Screen/Home_start_Bottom.dart';
+import 'package:e_ecommerce/home_page/widget/bottomNavigation.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:flutter/material.dart';
 

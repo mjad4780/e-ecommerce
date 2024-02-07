@@ -35,9 +35,9 @@ class _bannerState extends State<banner> {
                 padding: const EdgeInsets.all(16.0),
                 child: ListView(
                   children: [
-                    Image.network(
-                      //     Assets.imagesPexelsPhoto911677,
-                      cubit.banners2[index].image!,
+                    Image.asset(
+                      Assets.imagesPexelsPhoto911677,
+                      //  cubit.banners2[index].image!,
                       width: double.infinity,
                     ),
                     Padding(
