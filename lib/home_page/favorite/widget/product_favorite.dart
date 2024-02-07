@@ -1,5 +1,5 @@
 import 'package:e_ecommerce/core/assets2/app_assets.dart';
-import 'package:e_ecommerce/home_page/widget/rating.dart';
+import 'package:e_ecommerce/home_page/favorite/widget/rating.dart';
 import 'package:flutter/material.dart';
 
 class product_favorite extends StatelessWidget {

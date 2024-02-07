@@ -9,6 +9,7 @@ class EndPoint {
   static String logout = "logout";
   static String banners = "banners";
   static String categories = "categories";
+  static String home = "home";
 }
 
 class ApiKey {

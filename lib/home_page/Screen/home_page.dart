@@ -1,6 +1,12 @@
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/core/assets2/app_assets.dart';
+import 'package:e_ecommerce/core/cache/cache_helper.dart';
+import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/home_page/Screen/product.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
+import 'package:e_ecommerce/home_page/cart/model/get_cart_product.dart';
+import 'package:e_ecommerce/home_page/widget/Custem_categories.dart';
+import 'package:e_ecommerce/home_page/favorite/widget/Like.dart';
 import 'package:e_ecommerce/home_page/widget/banners.dart';
 import 'package:e_ecommerce/home_page/widget/product_home_page_card.dart';
 import 'package:e_ecommerce/widget/text.dart';
@@ -21,8 +27,7 @@ class _home_pageState extends State<home_page> {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<HomePageCubit>(context);
-    return BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {},
+    return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
         return Scaffold(
             body: ListView(
@@ -34,42 +39,17 @@ class _home_pageState extends State<home_page> {
                 hintText: 'search',
               ),
             ),
-            //      state is loadingbanners || state is loadingcategories
-            //     ? Center(child: CircularProgressIndicator())
-            // :
-            const banner(),
+            state is loadingbanners || state is loadingcategories
+                ? const Center(child: CircularProgressIndicator())
+                : const banner(),
             input_text(text: 'Categories'),
             const SizedBox(
               height: 2,
             ),
             SizedBox(
               height: 130,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 3,
-                //   cubit.categories.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                              radius: 36,
-                              backgroundImage:
-                                  AssetImage(Assets.imagesPexelsPhoto911677)
-                              //    NetworkImage(cubit.categories[index].image!)
-                              ),
-                          Text(
-                            'hyfhf',
-                            //  cubit.categories[index].name!,
-                            style: TextStyle(fontSize: 16),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
+              child: Custem_categories(
+                cubit: cubit,
               ),
             ),
             const Padding(
@@ -79,11 +59,9 @@ class _home_pageState extends State<home_page> {
                 style: TextStyle(fontSize: 22),
               ),
             ),
-            GestureDetector(
-                onTap: () {
-                  push(context, '/Product');
-                },
-                child: product_home_page_card()),
+            product_home_page(
+              cubit: cubit,
+            ),
           ],
         ));
       },

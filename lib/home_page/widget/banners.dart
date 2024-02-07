@@ -26,7 +26,7 @@ class _bannerState extends State<banner> {
             setState(() {});
           },
           controller: pageController,
-          itemCount: 3,
+          itemCount: cubit.banners2.length,
           itemBuilder: (context, index) {
             return SizedBox(
               height: 100,
@@ -35,16 +35,16 @@ class _bannerState extends State<banner> {
                 padding: const EdgeInsets.all(16.0),
                 child: ListView(
                   children: [
-                    Image.asset(
-                      Assets.imagesPexelsPhoto911677,
-                      //  cubit.banners2[index].image!,
+                    Image.network(
+                      // Assets.imagesPexelsPhoto911677,
+                      cubit.banners2[index].image!,
                       width: double.infinity,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 160, top: 6),
                       child: SmoothPageIndicator(
                         controller: pageController,
-                        count: 3,
+                        count: cubit.banners2.length,
                         effect: const ExpandingDotsEffect(
                           dotHeight: 6,
                           dotWidth: 6,

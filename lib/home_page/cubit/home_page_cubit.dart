@@ -2,13 +2,16 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:e_ecommerce/core/api/api_consumer.dart';
 import 'package:e_ecommerce/core/api/end_ponits.dart';
+import 'package:e_ecommerce/core/cache/cache_helper.dart';
 import 'package:e_ecommerce/home_page/Screen/cart.dart';
 import 'package:e_ecommerce/home_page/Screen/favorite.dart';
 import 'package:e_ecommerce/home_page/Screen/home_page.dart';
 import 'package:e_ecommerce/home_page/Screen/profile.dart';
 import 'package:e_ecommerce/home_page/Screen/shopping.dart';
-import 'package:e_ecommerce/home_page/models/categories.dart';
+import 'package:e_ecommerce/home_page/models/home_page.dart';
 import 'package:e_ecommerce/core/api/api_consumer.dart';
+import 'package:e_ecommerce/home_page/models/model_home_product.dart';
+import 'package:e_ecommerce/widget/test.dart';
 import 'package:flutter/material.dart';
 
 import 'package:meta/meta.dart';
@@ -65,4 +68,72 @@ class HomePageCubit extends Cubit<HomePageState> {
       emit(failercategories(error: e.message));
     }
   }
+
+  List<get_product_home> product_home = [];
+  void HomeProduct() async {
+    try {
+      emit(loadingchomeproduct());
+      final response = await api.get(EndPoint.home);
+      print(response);
+      for (var item in response['data']['products']) {
+        product_home.add(get_product_home.fromJson(json: item));
+      }
+
+      emit(successhomeproduct());
+    } on DioException catch (e) {
+      emit(failerhomeproduct(error: e.message));
+    }
+  }
 }
+
+
+
+
+
+
+
+
+
+
+//  List<ClassName> item = [];
+//   double Price = 0.0;
+//   int curent = 0;
+//   shop(ClassName className) {
+//     item.add(className);
+//     Price += className.price;
+//     curent = count;
+
+//     emit(successshop());
+//   }
+
+//   int get count {
+//     return item.length;
+    
+//   }
+
+//   double get Total {
+//     return Price;
+//   }
+
+//   List<ClassName> get basketitem {
+//     return item;
+//   }
+
+//   void ser(bool sea) {
+//     if (sea) {
+//       curent = curent + 1;
+//     } else if (curent == 0) {
+//       curent = 0;
+//     } else {
+//       curent = curent - 1;
+//     }
+//     //  CacheHelper.saveData(key: 'hello', value: curent) ?? '222';
+//     emit(successcurrent());
+//   }
+
+//   remove(ClassName className) {
+//     item.remove(className);
+//     Price -= className.price;
+
+//     emit(successshop());
+//   }

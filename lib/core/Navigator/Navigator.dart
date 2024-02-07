@@ -46,10 +46,10 @@ final GoRouter router = GoRouter(routes: [
     path: "/Home_start_Bottom",
     builder: (context, state) => Home_start_Bottom(),
   ),
-  GoRoute(
-    path: "/Product",
-    builder: (context, state) => Product(),
-  ),
+  // GoRoute(
+  //   path: "/Product",
+  //   builder: (context, state) => Product(),
+  // ),
 ]);
 
 void push(context, String path) {

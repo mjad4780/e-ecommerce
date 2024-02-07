@@ -1,43 +1,34 @@
 import 'package:e_ecommerce/core/cache/cache_helper.dart';
+import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class current extends StatefulWidget {
+class current extends StatelessWidget {
   const current({
     super.key,
   });
 
   @override
-  State<current> createState() => _currentState();
-}
-
-int curent = 0;
-void ser(bool sea) {
-  if (sea) {
-    curent = curent + 1;
-  } else if (curent == 0) {
-    curent = 0;
-  } else {
-    curent = curent - 1;
-  }
-  CacheHelper.saveData(key: 'hello', value: curent) ?? '222';
-}
-
-class _currentState extends State<current> {
-  @override
-  void initState() {
-    var cubit1 = CacheHelper.getData(key: 'hello');
-    if (cubit1 == null) {
-      curent = 11;
-    } else if (cubit1 != null) {
-      curent = cubit1;
-    } else {
-      curent = 222;
-    }
-    super.initState();
-  }
+  // void initState() {
+  //   var cubit1 = CacheHelper.getData(key: 'hello');
+  //   if (cubit1 == null) {
+  //     curent = 11;
+  //   } else if (cubit1 != null) {
+  //     curent = cubit1;
+  //   } else {
+  //     curent = 222;
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<HomePageCubit>(context);
+    // var cubit1 = CacheHelper.getData(key: 'hello');
+    // if (cubit1 != null) {
+    //   cubit.c = cubit1;
+
+    // }
     return Row(
       children: [
         IconButton(
@@ -53,14 +44,15 @@ class _currentState extends State<current> {
             ),
           ),
           onPressed: () {
-            ser(true);
-            setState(() {});
+            // cubit.ser(true);
           },
         ),
         Padding(
           padding: EdgeInsets.all(7.0),
           child: Text(
-            curent.toString(),
+            '2'
+            // cubit.curent.toString(),
+            ,
             style: TextStyle(fontSize: 25),
           ),
         ),
@@ -77,8 +69,7 @@ class _currentState extends State<current> {
             ),
           ),
           onPressed: () {
-            ser(false);
-            setState(() {});
+            // cubit.ser(false);
           },
         ),
       ],

@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) => HomePageCubit(api: DioConsumer(dio: Dio()))
               ..Banners()
-              ..Categoriess())
+              ..Categoriess()
+              ..HomeProduct())
       ],
       child: MaterialApp.router(
         routerConfig: router,

@@ -24,3 +24,16 @@ final class failercategories extends HomePageState {
   String? error;
   failercategories({this.error});
 }
+
+final class successcurrent extends HomePageState {}
+
+final class successshop extends HomePageState {}
+
+final class loadingchomeproduct extends HomePageState {}
+
+final class successhomeproduct extends HomePageState {}
+
+final class failerhomeproduct extends HomePageState {
+  String? error;
+  failerhomeproduct({this.error});
+}
