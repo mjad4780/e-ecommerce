@@ -1,15 +1,13 @@
 import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/favorite/widget/Like.dart';
+import 'package:e_ecommerce/favorite/widget/rating.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/home_page/models/model_home_product.dart';
-import 'package:e_ecommerce/home_page/favorite/widget/Like.dart';
 import 'package:e_ecommerce/home_page/widget/drob_down_menu.dart';
 import 'package:e_ecommerce/home_page/widget/image_product.dart';
-import 'package:e_ecommerce/home_page/favorite/widget/rating.dart';
 import 'package:e_ecommerce/widget/botom.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Product2 extends StatelessWidget {
   Product2({super.key, required this.product});

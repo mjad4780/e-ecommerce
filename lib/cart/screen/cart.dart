@@ -16,9 +16,7 @@ class cart extends StatelessWidget {
 
     return Scaffold(
         body: BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return Column(
           children: [
@@ -45,7 +43,7 @@ class cart extends StatelessWidget {
               height: 11,
             ),
             const Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

@@ -1,5 +1,5 @@
-import 'package:e_ecommerce/home_page/favorite/widget/favorite.dart';
-import 'package:e_ecommerce/home_page/favorite/widget/product_favorite.dart';
+import 'package:e_ecommerce/favorite/widget/favorite.dart';
+import 'package:e_ecommerce/favorite/widget/product_favorite.dart';
 import 'package:flutter/material.dart';
 
 class favorite extends StatelessWidget {

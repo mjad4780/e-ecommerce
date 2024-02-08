@@ -1,8 +1,6 @@
-import 'package:e_ecommerce/core/assets2/app_assets.dart';
-import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/cart/widget/current_cart.dart';
+import 'package:e_ecommerce/favorite/widget/Like.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
-import 'package:e_ecommerce/home_page/cart/widget/current_cart.dart';
-import 'package:e_ecommerce/widget/test.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,9 +11,7 @@ class product_cart extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<HomePageCubit>(context);
     return BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         return ListView.builder(
 
@@ -47,7 +43,7 @@ class product_cart extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Text('ubit.basketitem[index].name'),
-                        current()
+                        Current()
                       ],
                     ),
                   ),
