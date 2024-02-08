@@ -1,3 +1,4 @@
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
 import 'package:e_ecommerce/core/cache/cache_helper.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ class Current extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<HomePageCubit>(context);
+    final cubit = BlocProvider.of<CartCubitCubit>(context);
+    final cubit1 = BlocProvider.of<HomePageCubit>(context);
     // var cubit1 = CacheHelper.getData(key: 'hello');
     // if (cubit1 != null) {
     //   cubit.c = cubit1;
@@ -44,15 +46,15 @@ class Current extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // cubit.ser(true);
+            cubit.plus;
           },
         ),
         Padding(
           padding: EdgeInsets.all(7.0),
           child: Text(
-            '2'
+            //  cuget_cartbit.
             // cubit.curent.toString(),
-            ,
+            'g',
             style: TextStyle(fontSize: 25),
           ),
         ),
@@ -69,7 +71,7 @@ class Current extends StatelessWidget {
             ),
           ),
           onPressed: () {
-            // cubit.ser(false);
+            cubit.dd;
           },
         ),
       ],

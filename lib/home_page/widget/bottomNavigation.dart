@@ -1,3 +1,4 @@
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/home_page/widget/bottomNavigation.dart';
 import 'package:flutter/material.dart';
@@ -35,14 +36,18 @@ class Home_start_Bottom extends StatelessWidget {
                           .read<HomePageCubit>()
                           .currentbootomnav(index: index);
                     },
-                    tabs: const [
+                    tabs: [
                       GButton(
                         icon: Icons.home,
                         text: 'Home',
+                        onPressed: () {},
                       ),
                       GButton(
                         icon: Icons.shopping_cart,
                         text: 'cart',
+                        onPressed: () {
+                          context.read<CartCubitCubit>().Cart();
+                        },
                       ),
                       GButton(
                         icon: Icons.shopping_bag,

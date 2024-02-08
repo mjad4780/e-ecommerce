@@ -1,3 +1,4 @@
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/categories/widget/Custem_categories.dart';
 import 'package:e_ecommerce/home_page/widget/banners.dart';
@@ -18,6 +19,7 @@ class _home_pageState extends State<home_page> {
   bool current = true;
   @override
   Widget build(BuildContext context) {
+    final cubit1 = BlocProvider.of<CartCubitCubit>(context);
     final cubit = BlocProvider.of<HomePageCubit>(context);
     return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
@@ -31,7 +33,9 @@ class _home_pageState extends State<home_page> {
                 hintText: 'search',
               ),
             ),
-            state is loadingbanners || state is loadingcategories
+            state is loadingbanners ||
+                    state is loadingcategories ||
+                    state is postCartCubitloading
                 ? const Center(child: CircularProgressIndicator())
                 : const banner(),
             input_text(text: 'Categories'),

@@ -1,23 +1,15 @@
-import 'package:e_ecommerce/cart/widget/current_cart.dart';
-import 'package:e_ecommerce/favorite/widget/Like.dart';
-import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class product_cart extends StatelessWidget {
-  const product_cart({super.key});
-
+  const product_cart({super.key, required this.cubit});
+  final CartCubitCubit cubit;
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<HomePageCubit>(context);
-    return BlocConsumer<HomePageCubit, HomePageState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return ListView.builder(
-
-            //physics: NeverScrollableScrollPhysics(),
-            //  itemCount: cubit.basketitem.length,
-            itemBuilder: (BuildContext context, int index) {
+    return ListView.builder(
+        itemCount: cubit.get_cart.length,
+        itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(2.0),
             child: Container(
@@ -28,23 +20,34 @@ class product_cart extends StatelessWidget {
               height: 140,
               child: Row(
                 children: [
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(6.0),
                     child: Image(
-                      image: AssetImage('cubit.basketitem[index].image'),
+                      image: NetworkImage(cubit.get_cart[index].image!),
                       height: double.infinity,
                       width: 140,
                       fit: BoxFit.fill,
                     ),
                   ),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Text('ubit.basketitem[index].name'),
-                        Current()
-                      ],
+                    child: SizedBox(
+                      width: 135,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            cubit.get_cart[index].name!,
+                            style: TextStyle(
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          // SizedBox(
+                          //   height: 40,
+                          // ),
+                          // Current()
+                        ],
+                      ),
                     ),
                   ),
                   const SizedBox(
@@ -55,12 +58,15 @@ class product_cart extends StatelessWidget {
                     children: [
                       IconButton(
                         icon: Icon(Icons.delete),
-                        onPressed: () {},
+                        onPressed: () {
+                          cubit.post_cart(
+                              product_id: cubit.get_cart[index].id.toString());
+                        },
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          '4'
+                          cubit.get_cart[index].price.toString()
                           // cubit.basketitem[index].price.toString(),
                           ,
                           style: TextStyle(fontSize: 16),
@@ -73,7 +79,5 @@ class product_cart extends StatelessWidget {
             ),
           );
         });
-      },
-    );
   }
 }

@@ -5,7 +5,6 @@ import 'package:e_ecommerce/auth/Screeen_user/forget_password.dart';
 import 'package:e_ecommerce/auth/Screeen_user/login.dart';
 import 'package:e_ecommerce/auth/Screeen_user/rigster.dart';
 import 'package:e_ecommerce/auth/Screeen_user/user_profile.dart';
-import 'package:e_ecommerce/home_page/Screen/cart.dart';
 import 'package:e_ecommerce/favorite/screen/favorite.dart';
 import 'package:e_ecommerce/home_page/Screen/home_page.dart';
 import 'package:e_ecommerce/home_page/Screen/product.dart';

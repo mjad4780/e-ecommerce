@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:e_ecommerce/auth/cubit/user_cubit.dart';
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
 
 import 'package:e_ecommerce/core/api/dio_consumer.dart';
 import 'package:e_ecommerce/core/api/end_ponits.dart';
@@ -32,7 +33,10 @@ class MyApp extends StatelessWidget {
             create: (context) => HomePageCubit(api: DioConsumer(dio: Dio()))
               ..Banners()
               ..Categoriess()
-              ..HomeProduct())
+              ..HomeProduct()),
+        BlocProvider(
+            create: (context) =>
+                CartCubitCubit(api: DioConsumer(dio: Dio()))..Cart()),
       ],
       child: MaterialApp.router(
         routerConfig: router,

@@ -1,3 +1,5 @@
+import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
+import 'package:e_ecommerce/cart/widget/current_cart.dart';
 import 'package:e_ecommerce/core/cache/const.dart';
 import 'package:e_ecommerce/favorite/widget/Like.dart';
 import 'package:e_ecommerce/favorite/widget/rating.dart';
@@ -17,88 +19,101 @@ class Product2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<HomePageCubit>(context);
-    return Scaffold(
-        appBar: AppBar(
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.share,
-                ))
-          ],
-          title: Center(child: Text('Product')),
-        ),
-        body: ListView(
-          children: [
-            image_product(product: product),
-            const Row(
-              children: [
-                Drob_dawm_menu(label: 'size', dropdownMenuEntries: [
-                  DropdownMenuEntry(value: Colors.red, label: 'XL'),
-                  DropdownMenuEntry(value: Colors.red, label: 'XL')
-                ]),
-                Drob_dawm_menu(label: 'Color', dropdownMenuEntries: [
-                  DropdownMenuEntry(value: Colors.red, label: 'red'),
-                  DropdownMenuEntry(value: Colors.red, label: 'orange')
-                ]),
-                SizedBox(
-                  width: 21,
-                ),
-                like()
+    return BlocConsumer<CartCubitCubit, CartCubitState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        final cubit2 = BlocProvider.of<CartCubitCubit>(context);
+        return Scaffold(
+            appBar: AppBar(
+              actions: [
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.share,
+                    ))
               ],
+              title: Center(child: Text('Product')),
             ),
-            const SizedBox(
-              height: 11,
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
+            body: ListView(
+              children: [
+                Current(),
+
+                //  image_product(product: product),
+                const Row(
+                  children: [
+                    Drob_dawm_menu(label: 'size', dropdownMenuEntries: [
+                      DropdownMenuEntry(value: Colors.red, label: 'XL'),
+                      DropdownMenuEntry(value: Colors.red, label: 'XL')
+                    ]),
+                    Drob_dawm_menu(label: 'Color', dropdownMenuEntries: [
+                      DropdownMenuEntry(value: Colors.red, label: 'red'),
+                      DropdownMenuEntry(value: Colors.red, label: 'orange')
+                    ]),
+                    SizedBox(
+                      width: 21,
+                    ),
+                    like()
+                  ],
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        product.id.toString(),
-                        style: TextStyle(fontSize: 22),
+                      Column(
+                        children: [
+                          Text(
+                            product.id.toString(),
+                            style: TextStyle(fontSize: 22),
+                          ),
+                          const Rating()
+                        ],
                       ),
-                      const Rating()
+                      const SizedBox(
+                        height: 11,
+                      ),
+                      Text(
+                        product.oldPrice.toString(),
+                        style: TextStyle(fontSize: 22, color: Colors.red),
+                      ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 11,
+                ),
+                Text(
+                  product.name!,
+                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.fade,
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    product.description!,
+                    style: TextStyle(fontSize: 22),
                   ),
-                  Text(
-                    product.oldPrice.toString(),
-                    style: TextStyle(fontSize: 22, color: Colors.red),
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: CustomFormButton(
+                    innerText: 'ADD To CART',
+                    onPressed: () {
+                      cubit2.post_cart(product_id: product.id.toString());
+                    },
                   ),
-                ],
-              ),
-            ),
-            Text(
-              product.name!,
-              style: TextStyle(fontSize: 16),
-              overflow: TextOverflow.fade,
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                product.description!,
-                style: TextStyle(fontSize: 22),
-              ),
-            ),
-            const SizedBox(
-              height: 11,
-            ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CustomFormButton(
-                innerText: 'ADD To CART',
-              ),
-            ),
-          ],
-        ));
+                ),
+              ],
+            ));
+      },
+    );
   }
 }

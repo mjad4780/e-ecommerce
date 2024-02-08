@@ -10,6 +10,7 @@ class EndPoint {
   static String banners = "banners";
   static String categories = "categories";
   static String home = "home";
+  static String carts = "carts";
 }
 
 class ApiKey {
