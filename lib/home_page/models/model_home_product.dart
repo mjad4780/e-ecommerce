@@ -13,8 +13,8 @@ class get_product_home {
   get_product_home.fromJson({required Map<String, dynamic> json}) {
     id = json['id'];
     price = json['price'].toInt();
-    oldPrice = json['old_price'].toInt();
-    discount = json['discount'].toInt();
+    oldPrice = json['old_price'];
+    discount = json['discount'];
     image = json['image'];
     name = json['name'];
     description = json['description'];

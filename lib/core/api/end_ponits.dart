@@ -11,6 +11,8 @@ class EndPoint {
   static String categories = "categories";
   static String home = "home";
   static String carts = "carts";
+  static String favorite = "favorites";
+  static String search = "products/search";
 }
 
 class ApiKey {

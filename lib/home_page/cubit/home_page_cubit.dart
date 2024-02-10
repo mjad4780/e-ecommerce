@@ -53,6 +53,7 @@ class HomePageCubit extends Cubit<HomePageState> {
     }
   }
 
+  // Set<String> categories_id = {};
   List<Categories> categories = [];
   Categoriess() async {
     try {
@@ -60,6 +61,7 @@ class HomePageCubit extends Cubit<HomePageState> {
       final response = await api.get(EndPoint.categories);
 
       for (var item in response['data']['data']) {
+        //  categories_id.add(item['id'].toString());
         categories.add(Categories.fromJson(json: item));
       }
 

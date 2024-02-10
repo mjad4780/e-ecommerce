@@ -1,12 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:e_ecommerce/auth/cubit/user_cubit.dart';
 import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
+import 'package:e_ecommerce/categories/cubit/product_categories_cubit.dart';
 
 import 'package:e_ecommerce/core/api/dio_consumer.dart';
 import 'package:e_ecommerce/core/api/end_ponits.dart';
 import 'package:e_ecommerce/core/cache/cache_helper.dart';
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
 import 'package:e_ecommerce/core/cache/const.dart';
+import 'package:e_ecommerce/favorite/cubit/favorite_cubit.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -37,6 +39,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(
             create: (context) =>
                 CartCubitCubit(api: DioConsumer(dio: Dio()))..Cart()),
+        // BlocProvider(
+        //     create: (context) =>
+        //         FavoriteCubit(api: DioConsumer(dio: Dio()))..Favorites()),
+        BlocProvider(
+            create: (context) =>
+                ProductCategoriesCubit(api: DioConsumer(dio: Dio())))
       ],
       child: MaterialApp.router(
         routerConfig: router,

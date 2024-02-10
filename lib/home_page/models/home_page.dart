@@ -3,7 +3,7 @@ class banners {
   String? image;
 
   banners.fromJson({required Map<String, dynamic> json}) {
-    id = json['status'];
+    id = json['id'];
     image = json['image'];
   }
 }
@@ -14,7 +14,7 @@ class Categories {
   String? name;
 
   Categories.fromJson({required Map<String, dynamic> json}) {
-    id = json['status'];
+    id = json['id'];
     image = json['image'];
     name = json['name'];
   }

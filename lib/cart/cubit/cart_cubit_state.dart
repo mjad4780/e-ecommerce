@@ -28,3 +28,26 @@ final class postCartCubitfailer extends CartCubitState {
 
   postCartCubitfailer({required this.errornMassege});
 }
+
+///
+///
+///
+final class Favoritloading extends CartCubitState {}
+
+final class Favoritesuccesss extends CartCubitState {}
+
+final class Favoritefailer extends CartCubitState {
+  final String errormessege;
+
+  Favoritefailer({required this.errormessege});
+}
+
+final class postFavoritloading extends CartCubitState {}
+
+final class postFavoritesuccesss extends CartCubitState {}
+
+final class postFavoritefailer extends CartCubitState {
+  final String errormessege;
+
+  postFavoritefailer({required this.errormessege});
+}

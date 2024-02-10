@@ -1,4 +1,6 @@
 import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
+import 'package:e_ecommerce/categories/cubit/product_categories_cubit.dart';
+import 'package:e_ecommerce/home_page/Screen/Ui_Search.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:e_ecommerce/categories/widget/Custem_categories.dart';
 import 'package:e_ecommerce/home_page/widget/banners.dart';
@@ -8,17 +10,14 @@ import 'package:e_ecommerce/widget/text_filed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class home_page extends StatefulWidget {
-  const home_page({super.key});
+class home_page extends StatelessWidget {
+  home_page({super.key});
+  // TextEditingController search = TextEditingController();
 
-  @override
-  State<home_page> createState() => _home_pageState();
-}
-
-class _home_pageState extends State<home_page> {
-  bool current = true;
+  // current = true;
   @override
   Widget build(BuildContext context) {
+    final cubit2 = BlocProvider.of<ProductCategoriesCubit>(context);
     final cubit1 = BlocProvider.of<CartCubitCubit>(context);
     final cubit = BlocProvider.of<HomePageCubit>(context);
     return BlocBuilder<HomePageCubit, HomePageState>(
@@ -26,14 +25,28 @@ class _home_pageState extends State<home_page> {
         return Scaffold(
             body: ListView(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: CustomInputField(
-                suffixIcon2: Icon(Icons.search),
-                hintText: 'search',
-              ),
+            BlocConsumer<ProductCategoriesCubit, ProductCategoriesState>(
+              listener: (context, state) {
+                // TODO: implement listener
+              },
+              builder: (context, state) {
+                return Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: CustomInputField(
+                    controller: cubit2.search,
+                    suffixIcon2: IconButton(
+                        onPressed: () {
+                          cubit2.Search(searc: cubit2.search.text);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => Search()));
+                        },
+                        icon: Icon(Icons.search)),
+                    hintText: 'search',
+                  ),
+                );
+              },
             ),
-            state is loadingbanners ||
+            state is loadingbanners || /////////
                     state is loadingcategories ||
                     state is postCartCubitloading
                 ? const Center(child: CircularProgressIndicator())

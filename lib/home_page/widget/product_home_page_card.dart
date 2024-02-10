@@ -1,9 +1,7 @@
 import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
-import 'package:e_ecommerce/core/cache/const.dart';
-import 'package:e_ecommerce/favorite/widget/Like.dart';
 import 'package:e_ecommerce/home_page/Screen/product.dart';
+
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
-import 'package:e_ecommerce/home_page/models/model_home_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,11 +15,7 @@ class product_home_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit1 = BlocProvider.of<CartCubitCubit>(context);
-
-    return BlocConsumer<CartCubitCubit, CartCubitState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+    return BlocConsumer<HomePageCubit, HomePageState>(
       builder: (context, state) {
         return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -96,26 +90,62 @@ class product_home_page extends StatelessWidget {
                       height: 100,
                     ),
                   ),
-                  const Positioned(right: 6, top: 90, child: like()),
-                  Positioned(
-                      right: 80,
-                      top: 90,
-                      child: IconButton(
-                        onPressed: () {
-                          cubit1.post_cart(
-                              product_id:
-                                  cubit.product_home[index].id.toString());
-                        },
-                        icon: Icon(Icons.shopping_cart,
-                            color: cubit1.Cart_id.contains(
-                                    cubit.product_home[index].id.toString())
-                                ? Colors.red
-                                : Colors.white),
-                      )),
+                  state is postFavoritloading
+                      ? CircularProgressIndicator()
+                      : Positioned(
+                          right: 6,
+                          top: 90,
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.grey.withOpacity(.4),
+                                shape: BoxShape.circle,
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Colors.grey.withOpacity(.2),
+                                      blurRadius: 11, //الظل
+                                      offset: Offset(4, 4))
+                                ]),
+                            width: 60,
+                            height: 50,
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 2, vertical: 2),
+                            child: IconButton(
+                                onPressed: () {
+                                  cubit1.post_Favorites(
+                                      id: cubit.product_home[index].id
+                                          .toString());
+                                },
+                                icon: Icon(
+                                  Icons.favorite,
+                                  color: cubit1.favorite_id.contains(cubit
+                                          .product_home[index].id
+                                          .toString())
+                                      ? Colors.red
+                                      : Colors.white,
+                                )),
+                          )),
+                  state is postCartCubitloading
+                      ? CircularProgressIndicator()
+                      : Positioned(
+                          right: 80,
+                          top: 90,
+                          child: IconButton(
+                            onPressed: () {
+                              cubit1.post_cart(
+                                  product_id:
+                                      cubit.product_home[index].id.toString());
+                            },
+                            icon: Icon(Icons.shopping_cart,
+                                color: cubit1.Cart_id.contains(
+                                        cubit.product_home[index].id.toString())
+                                    ? Colors.red
+                                    : Colors.white),
+                          )),
                 ]),
               );
             });
       },
+      listener: (BuildContext context, HomePageState state) {},
     );
   }
 }

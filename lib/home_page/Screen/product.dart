@@ -1,5 +1,6 @@
 import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
 import 'package:e_ecommerce/cart/widget/current_cart.dart';
+import 'package:e_ecommerce/categories/model/product_categories.dart';
 import 'package:e_ecommerce/core/cache/const.dart';
 import 'package:e_ecommerce/favorite/widget/Like.dart';
 import 'package:e_ecommerce/favorite/widget/rating.dart';
@@ -12,17 +13,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Product2 extends StatelessWidget {
-  Product2({super.key, required this.product});
+  Product2({
+    super.key,
+    required this.product,
+  });
   final PageController controller = PageController();
 
   final get_product_home product;
+  // final Product? product2;
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<HomePageCubit>(context);
     return BlocConsumer<CartCubitCubit, CartCubitState>(
-      listener: (context, state) {
-        // TODO: implement listener
-      },
+      listener: (context, state) {},
       builder: (context, state) {
         final cubit2 = BlocProvider.of<CartCubitCubit>(context);
         return Scaffold(
@@ -40,8 +43,8 @@ class Product2 extends StatelessWidget {
               children: [
                 Current(),
 
-                //  image_product(product: product),
-                const Row(
+                image_product(product: product),
+                Row(
                   children: [
                     Drob_dawm_menu(label: 'size', dropdownMenuEntries: [
                       DropdownMenuEntry(value: Colors.red, label: 'XL'),
@@ -54,7 +57,9 @@ class Product2 extends StatelessWidget {
                     SizedBox(
                       width: 21,
                     ),
-                    like()
+                    // like(
+                    //   product: product!.id!,
+                    // )
                   ],
                 ),
                 const SizedBox(
@@ -67,38 +72,38 @@ class Product2 extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(
-                            product.id.toString(),
-                            style: TextStyle(fontSize: 22),
-                          ),
+                          Text(product.id.toString()
+                              // product!.id.toString(),
+                              //   style: TextStyle(fontSize: 22),
+                              ),
                           const Rating()
                         ],
                       ),
                       const SizedBox(
                         height: 11,
                       ),
-                      Text(
-                        product.oldPrice.toString(),
-                        style: TextStyle(fontSize: 22, color: Colors.red),
-                      ),
+                      // Text(
+                      //  / product!.oldPrice.toString(),
+                      //   style: TextStyle(fontSize: 22, color: Colors.red),
+                      // ),
                     ],
                   ),
                 ),
-                Text(
-                  product.name!,
-                  style: TextStyle(fontSize: 16),
-                  overflow: TextOverflow.fade,
-                ),
+                // Text(
+                //   product!.name!,
+                //   style: TextStyle(fontSize: 16),
+                //   overflow: TextOverflow.fade,
+                // ),
                 const SizedBox(
                   height: 11,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    product.description!,
-                    style: TextStyle(fontSize: 22),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: Text(
+                //     product!.description!,
+                //     style: TextStyle(fontSize: 22),
+                //   ),
+                //    ),
                 const SizedBox(
                   height: 11,
                 ),

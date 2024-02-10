@@ -46,7 +46,7 @@ class Home_start_Bottom extends StatelessWidget {
                         icon: Icons.shopping_cart,
                         text: 'cart',
                         onPressed: () {
-                          context.read<CartCubitCubit>().Cart();
+                          //  context.read<CartCubitCubit>().Cart();
                         },
                       ),
                       GButton(
@@ -56,6 +56,9 @@ class Home_start_Bottom extends StatelessWidget {
                       GButton(
                         icon: Icons.favorite,
                         text: 'Likes',
+                        onPressed: () {
+                          //    context.read<CartCubitCubit>().Favorites();
+                        },
                       ),
                       GButton(
                         icon: Icons.person,
