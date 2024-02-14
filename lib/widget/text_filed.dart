@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomInputField extends StatefulWidget {
   final Widget? icon;
+  final Function(String?)? onChanged;
   final Widget? suffixIcon2;
   final Widget? label;
   final Widget? suffix;
@@ -15,6 +16,7 @@ class CustomInputField extends StatefulWidget {
       {super.key,
       required this.hintText,
       this.suffixIcon = false,
+      this.onChanged,
       this.isDense,
       this.validator,
       this.obscureText = false,
@@ -33,6 +35,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       obscureText: (widget.obscureText && _obscureText),
       decoration: InputDecoration(
           label: widget.label,

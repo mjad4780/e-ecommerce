@@ -37,8 +37,9 @@ class MyApp extends StatelessWidget {
               ..Categoriess()
               ..HomeProduct()),
         BlocProvider(
-            create: (context) =>
-                CartCubitCubit(api: DioConsumer(dio: Dio()))..Cart()),
+            create: (context) => CartCubitCubit(api: DioConsumer(dio: Dio()))
+              ..Cart()
+              ..Favorites()),
         // BlocProvider(
         //     create: (context) =>
         //         FavoriteCubit(api: DioConsumer(dio: Dio()))..Favorites()),

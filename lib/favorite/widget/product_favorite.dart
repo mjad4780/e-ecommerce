@@ -17,62 +17,58 @@ class product_favorite extends StatelessWidget {
     return BlocConsumer<CartCubitCubit, CartCubitState>(
       listener: (context, state) {},
       builder: (context, state) {
-        return SizedBox(
-          height: 400,
-          child: ListView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: cubit.get_favorite.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(2.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 217, 206, 206),
-                      borderRadius: BorderRadius.circular(12)),
-                  width: double.infinity,
-                  height: 140,
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.all(6.0),
-                        child: Image(
-                          image: NetworkImage(cubit.get_favorite[index].image!),
-                          height: double.infinity,
-                          width: 140,
-                          fit: BoxFit.fill,
-                        ),
+        return ListView.builder(
+          itemCount: cubit.get_favorite.length,
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: const EdgeInsets.all(2.0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 217, 206, 206),
+                    borderRadius: BorderRadius.circular(12)),
+                width: double.infinity,
+                height: 140,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(6.0),
+                      child: Image(
+                        image: NetworkImage(cubit.get_favorite[index].image!),
+                        height: double.infinity,
+                        width: 140,
+                        fit: BoxFit.fill,
                       ),
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Text('dadxhgfta'),
-                            Text('dfjfchfc'),
-                            Text(cubit.get_favorite[index].price.toString())
-                          ],
-                        ),
-                      ),
-                      Rating(),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.delete),
-                            onPressed: () {
-                              cubit.post_Favorites(
-                                  id: cubit.get_favorite[index].id.toString());
-                            },
-                          ),
+                          Text('dadxhgfta'),
+                          Text('dfjfchfc'),
+                          Text(cubit.get_favorite[index].price.toString())
                         ],
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                    Rating(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () {
+                            cubit.post_Favorites(
+                                id: cubit.get_favorite[index].id.toString());
+                          },
+                        ),
+                      ],
+                    )
+                  ],
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         );
       },
     );

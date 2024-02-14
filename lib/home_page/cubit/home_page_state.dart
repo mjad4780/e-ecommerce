@@ -37,3 +37,5 @@ final class failerhomeproduct extends HomePageState {
   String? error;
   failerhomeproduct({this.error});
 }
+
+final class Filteroutsuccess extends HomePageState {}

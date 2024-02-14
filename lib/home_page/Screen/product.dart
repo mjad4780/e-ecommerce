@@ -42,9 +42,8 @@ class Product2 extends StatelessWidget {
             body: ListView(
               children: [
                 Current(),
-
                 image_product(product: product),
-                Row(
+                const Row(
                   children: [
                     Drob_dawm_menu(label: 'size', dropdownMenuEntries: [
                       DropdownMenuEntry(value: Colors.red, label: 'XL'),
@@ -72,38 +71,39 @@ class Product2 extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Text(product.id.toString()
-                              // product!.id.toString(),
-                              //   style: TextStyle(fontSize: 22),
-                              ),
+                          Text(
+                            product.id.toString(),
+                            // product!.id.toString(),
+                            style: TextStyle(fontSize: 22),
+                          ),
                           const Rating()
                         ],
                       ),
                       const SizedBox(
                         height: 11,
                       ),
-                      // Text(
-                      //  / product!.oldPrice.toString(),
-                      //   style: TextStyle(fontSize: 22, color: Colors.red),
-                      // ),
+                      Text(
+                        product.oldPrice.toString(),
+                        style: TextStyle(fontSize: 22, color: Colors.red),
+                      ),
                     ],
                   ),
                 ),
-                // Text(
-                //   product!.name!,
-                //   style: TextStyle(fontSize: 16),
-                //   overflow: TextOverflow.fade,
-                // ),
+                Text(
+                  product!.name!,
+                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.fade,
+                ),
                 const SizedBox(
                   height: 11,
                 ),
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: Text(
-                //     product!.description!,
-                //     style: TextStyle(fontSize: 22),
-                //   ),
-                //    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    product.description!,
+                    style: TextStyle(fontSize: 22),
+                  ),
+                ),
                 const SizedBox(
                   height: 11,
                 ),

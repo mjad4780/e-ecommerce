@@ -1,7 +1,10 @@
 import 'package:e_ecommerce/cart/cubit/cart_cubit_cubit.dart';
+import 'package:e_ecommerce/cart/widget/shop_cart.dart';
+import 'package:e_ecommerce/favorite/widget/Like.dart';
 import 'package:e_ecommerce/home_page/Screen/product.dart';
 
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
+import 'package:e_ecommerce/home_page/widget/Card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,6 +19,7 @@ class product_home_page extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit1 = BlocProvider.of<CartCubitCubit>(context);
     return BlocConsumer<HomePageCubit, HomePageState>(
+      listener: (BuildContext context, HomePageState state) {},
       builder: (context, state) {
         return GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -30,122 +34,55 @@ class product_home_page extends StatelessWidget {
                 crossAxisCount: 2),
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => Product2(
-                            product: cubit.product_home[index],
-                          )));
-                },
-                child: Stack(clipBehavior: Clip.none, children: [
-                  Container(
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                          color: Colors.grey.withOpacity(.2),
-                          blurRadius: 22, //الظل
-                          offset: Offset(10, 10))
-                    ]),
-                    child: Card(
-                      elevation: 10,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 16),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(cubit.product_home[index].id.toString()),
-                            Text(
-                              cubit.product_home[index].name!,
-                              style: const TextStyle(
-                                  fontSize: 16,
-                                  overflow: TextOverflow.ellipsis),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  '${cubit.product_home[index].oldPrice.toString()}\$',
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      decoration: TextDecoration.lineThrough),
-                                ),
-                                Text(
-                                  '${cubit.product_home[index].price.toString()}\$',
-                                  style: const TextStyle(
-                                      color: Colors.red, fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => Product2(
+                              product: cubit.product_home[index],
+                            )));
+                  },
+                  child: Stack(clipBehavior: Clip.none, children: [
+                    Card1(
+                      index: index,
+                      cubit: cubit,
+                    ),
+                    Positioned(
+                      right: 10,
+                      top: -11,
+                      child: Image.network(
+                        '${cubit.product_home[index].image}',
+                        width: 150,
+                        height: 100,
                       ),
                     ),
-                  ),
-                  Positioned(
-                    right: 10,
-                    top: -11,
-                    child: Image.network(
-                      '${cubit.product_home[index].image}',
-                      width: 150,
-                      height: 100,
-                    ),
-                  ),
-                  state is postFavoritloading
-                      ? CircularProgressIndicator()
-                      : Positioned(
-                          right: 6,
-                          top: 90,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.grey.withOpacity(.4),
-                                shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Colors.grey.withOpacity(.2),
-                                      blurRadius: 11, //الظل
-                                      offset: Offset(4, 4))
-                                ]),
-                            width: 60,
-                            height: 50,
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 2, vertical: 2),
-                            child: IconButton(
-                                onPressed: () {
-                                  cubit1.post_Favorites(
-                                      id: cubit.product_home[index].id
-                                          .toString());
-                                },
-                                icon: Icon(
-                                  Icons.favorite,
-                                  color: cubit1.favorite_id.contains(cubit
-                                          .product_home[index].id
-                                          .toString())
-                                      ? Colors.red
-                                      : Colors.white,
-                                )),
-                          )),
-                  state is postCartCubitloading
-                      ? CircularProgressIndicator()
-                      : Positioned(
-                          right: 80,
-                          top: 90,
-                          child: IconButton(
-                            onPressed: () {
-                              cubit1.post_cart(
-                                  product_id:
-                                      cubit.product_home[index].id.toString());
-                            },
-                            icon: Icon(Icons.shopping_cart,
-                                color: cubit1.Cart_id.contains(
-                                        cubit.product_home[index].id.toString())
-                                    ? Colors.red
-                                    : Colors.white),
-                          )),
-                ]),
-              );
+                    state is postFavoritloading
+                        ? CircularProgressIndicator()
+                        : Like(
+                            cubit1: cubit1,
+                            index: index,
+                            cubit: cubit,
+                          ),
+                    state is postCartCubitloading
+                        ? CircularProgressIndicator()
+                        : shop_cart(
+                            index: index,
+                            cubit1: cubit1,
+                            cubit: cubit,
+                          ),
+                  ]));
             });
       },
-      listener: (BuildContext context, HomePageState state) {},
     );
   }
+
+  // Card1 Card(int index) {
+  //   return
+  // }
+
+  // Positioned cart(CartCubitCubit cubit1, int index) {
+  //   return
+  // }
 }
+//   Positioned Like(CartCubitCubit cubit1, int index) {
+//     return
+//   }
+// }

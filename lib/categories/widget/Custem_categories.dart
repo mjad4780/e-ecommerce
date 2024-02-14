@@ -1,5 +1,7 @@
+import 'package:dio/dio.dart';
 import 'package:e_ecommerce/categories/cubit/product_categories_cubit.dart';
 import 'package:e_ecommerce/core/Navigator/Navigator.dart';
+import 'package:e_ecommerce/core/api/dio_consumer.dart';
 import 'package:e_ecommerce/home_page/cubit/home_page_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

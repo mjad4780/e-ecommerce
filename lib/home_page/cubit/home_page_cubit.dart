@@ -86,6 +86,15 @@ class HomePageCubit extends Cubit<HomePageState> {
       emit(failerhomeproduct(error: e.message));
     }
   }
+
+  List<get_product_home> fileter = [];
+  void Filter({required String input}) {
+    fileter = product_home
+        .where((element) =>
+            element.name!.toLowerCase().startsWith(input.toLowerCase()))
+        .toList();
+    emit(Filteroutsuccess());
+  }
 }
 
 

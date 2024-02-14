@@ -12,41 +12,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class home_page extends StatelessWidget {
   home_page({super.key});
-  // TextEditingController search = TextEditingController();
-
-  // current = true;
   @override
   Widget build(BuildContext context) {
     final cubit2 = BlocProvider.of<ProductCategoriesCubit>(context);
-    final cubit1 = BlocProvider.of<CartCubitCubit>(context);
     final cubit = BlocProvider.of<HomePageCubit>(context);
     return BlocBuilder<HomePageCubit, HomePageState>(
       builder: (context, state) {
         return Scaffold(
             body: ListView(
           children: [
-            BlocConsumer<ProductCategoriesCubit, ProductCategoriesState>(
-              listener: (context, state) {
-                // TODO: implement listener
-              },
-              builder: (context, state) {
-                return Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: CustomInputField(
-                    controller: cubit2.search,
-                    suffixIcon2: IconButton(
-                        onPressed: () {
-                          cubit2.Search(searc: cubit2.search.text);
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => Search()));
-                        },
-                        icon: Icon(Icons.search)),
-                    hintText: 'search',
-                  ),
-                );
-              },
+            Padding(
+              padding: EdgeInsets.all(12.0),
+              child: CustomInputField(
+                onChanged: (value) {
+                  cubit.Filter(input: value!);
+                },
+                controller: cubit2.search,
+                suffixIcon2: IconButton(
+                    onPressed: () {
+                      cubit2.Search(searc: cubit2.search.text);
+
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Search()));
+                    },
+                    icon: Icon(Icons.search)),
+                hintText: 'search',
+              ),
             ),
-            state is loadingbanners || /////////
+            state is loadingbanners ||
+                    /////////
                     state is loadingcategories ||
                     state is postCartCubitloading
                 ? const Center(child: CircularProgressIndicator())
